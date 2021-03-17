@@ -50,6 +50,7 @@ setwd("C:/Users/G_MAN/OneDrive/DePaul/Machine Learning/DSC-478")
 
 ```{r Survey data, include=F,echo=F}
 data  <- read.csv("data/aviation_data_dummies.csv")  # Read Survey file 
+data <- data[-c(1)]
 ```
 
 
@@ -61,7 +62,7 @@ data  <- read.csv("data/aviation_data_dummies.csv")  # Read Survey file
 
 spearmanPCA <- PC_Analysis(df = data,type = "spearman",folder = "PCA",PCAName = "spearman_AllFactors")
 
-spearmanPCA2 <- PC_Analysis(df = data,type = "spearman",factors = 4,folder = "PCA",PCAName = "spearman_4Factors")
+spearmanPCA2 <- PC_Analysis(df = data,type = "spearman",factors = 5,folder = "PCA",PCAName = "spearman_5Factors")
 
 ```
 
