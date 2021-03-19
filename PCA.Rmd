@@ -1,0 +1,86 @@
+---
+title             : "Assignment 4: Modules 5 & 7"
+shorttitle        : "Assignment 4"
+author: 
+  - name          : "Gerardo Palacios"
+    affiliation   : "1,2"
+affiliation:
+  - id            : "1"
+    institution   : "DSC 424 - Advanced Data Analysis"
+  - id            : "2"
+    institution   : "DePaul University"
+bibliography      : ["r-references.bib"]
+floatsintext      : yes
+figsintext        : yes
+figurelist        : yes
+tablelist         : yes
+footnotelist      : no
+linenumbers       : no
+mask              : no
+draft             : no
+documentclass     : "apa6"
+classoption       : "man"
+output            :  papaja::apa6_pdf
+fontsize          : 11pt
+# papaja::apa6_pdf
+header-includes:
+  - \usepackage{afterpage}
+  - \usepackage{setspace}
+  - \usepackage{afterpage}
+  - \newcommand{\blandatacape}{\begin{landatacape}}
+  - \newcommand{\elandatacape}{\end{landatacape}}
+editor_options: 
+  chunk_output_type: console
+---
+\singlespacing
+```{r setup, include = FALSE,echo=FALSE}
+library("papaja")
+library(knitr)
+library(kableExtra)
+library(xtable)
+library(psych)
+
+source("C:/Users/G_MAN/OneDrive/DePaul/Machine Learning/DSC-478/R Functions/SummaryFunctions.R")
+
+source("C:/Users/G_MAN/OneDrive/DePaul/Machine Learning/DSC-478/R Functions/Confusion.R")
+
+setwd("C:/Users/G_MAN/OneDrive/DePaul/Machine Learning/DSC-478")
+
+```
+
+```{r Survey data, include=F,echo=F}
+data  <- read.csv("data/aviation_data_dummies.csv")  # Read Survey file 
+data <- data[-c(1)]
+```
+
+
+# Principle Factor Analysis - Survey
+
+
+
+```{r PCA Function, include=F,echo=F}
+
+spearmanPCA <- PC_Analysis(df = data,type = "spearman",folder = "PCA",PCAName = "spearman_AllFactors")
+
+spearmanPCA2 <- PC_Analysis(df = data,type = "spearman",factors = 5,folder = "PCA",PCAName = "spearman_5Factors")
+
+```
+
+
+```{r PCA plots, include=T,echo=F,fig.asp=.5,fig.align='center'}
+spearmanPCA$Plots$`Scree plot Scaled vs Unscaled`
+```
+
+
+```{r PCA Unscaled , include=T,echo=T}
+summary(spearmanPCA$`PCA results`$`PrComp-notScaled`)
+```
+
+```{r PCA Scaled, include=T,echo=T}
+summary(spearmanPCA$`PCA results`$`PrComp-Scaled`)
+```
+
+```{r Principle Results, include=T,echo=T}
+print(spearmanPCA2$`PCA results`$`Principal Unrotated - Scaled`$loadings,cutoff=.4,sort=T)
+```
+
