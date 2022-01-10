@@ -1,4 +1,4 @@
-# DSC-478
+# Classifying Airline Passenger Satisfaction
 DSC 478 - Final Project
 # Executive Summary
 The competition in the airline industry is fierce and it is increasingly difficult to obtain an edge. The introduction of machine learning applications in business brings both the opportunities to get more competitive, but also to challenges to keep up with the industry leaders. This paper presents an application of classification techniques in the airline industry. The goal of our classification algorithms is not only to predict the customer satisfaction based on the common metrics most airlines track about their customers, but also to understand which factors are the most important to keep the customers loyal.
